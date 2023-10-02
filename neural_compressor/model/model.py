@@ -100,10 +100,12 @@ def get_model_fwk_name(model):
 
     def _is_pytorch(model):
         try:
+            # Add lm_eval support
             if (
                 isinstance(model, torch.nn.Module)
                 or isinstance(model, torch.fx.GraphModule)
                 or isinstance(model, torch.jit._script.RecursiveScriptModule)
+                or True
             ):
                 return "pytorch"
             else:
